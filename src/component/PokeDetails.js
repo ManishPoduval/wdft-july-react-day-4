@@ -16,7 +16,7 @@ class PokeDetails extends Component {
             const {sprites:{ other:{ dream_world } } } = res.data
             this.setState({
                 name: res.data.name,
-                id: id
+                id: id,
                 img: dream_world.front_default
             })
         })
