@@ -5,7 +5,8 @@ class PokeDetails extends Component {
 
     state = {
         name: '',
-        img: ''
+        img: '',
+        id: '',
     }
 
     makeApiCall = () => {
@@ -15,6 +16,7 @@ class PokeDetails extends Component {
             const {sprites:{ other:{ dream_world } } } = res.data
             this.setState({
                 name: res.data.name,
+                id: id
                 img: dream_world.front_default
             })
         })
@@ -25,7 +27,11 @@ class PokeDetails extends Component {
     }
 
     componentDidUpdate(){ 
-        this.makeApiCall()  
+        // to avoid infinite API calls, fectch the data if it has not been fetched preiously 
+        if (this.state.id != this.props.match.params.id) {
+            this.makeApiCall() 
+        }
+         
     }
 
     render() {
