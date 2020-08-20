@@ -6,7 +6,7 @@ class PokeDetails extends Component {
     state = {
         name: '',
         img: '',
-        id: '',
+        id: '', // create this to save the pokemon id
     }
 
     makeApiCall = () => {
@@ -16,7 +16,7 @@ class PokeDetails extends Component {
             const {sprites:{ other:{ dream_world } } } = res.data
             this.setState({
                 name: res.data.name,
-                id: id,
+                id: id,  // we save the pokemon id in the state
                 img: dream_world.front_default
             })
         })
